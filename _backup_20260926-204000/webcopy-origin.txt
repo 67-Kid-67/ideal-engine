@@ -1,0 +1,40 @@
+Uri: https://car-soccer.com/
+File Name: C:\Downloaded Web Sites\car-soccer.com\index.htm
+Content Type: text/html
+
+Uri: https://car-soccer.com/android-chrome-512x512.png
+File Name: C:\Downloaded Web Sites\car-soccer.com\android-chrome-512x512.png
+Content Type: image/png
+
+Uri: https://car-soccer.com/apple-touch-icon.png
+File Name: C:\Downloaded Web Sites\car-soccer.com\apple-touch-icon.png
+Content Type: image/png
+
+Uri: https://car-soccer.com/assets/main-BYqUVBMP.css
+File Name: C:\Downloaded Web Sites\car-soccer.com\assets\main-BYqUVBMP.css
+Content Type: text/css
+
+Uri: https://car-soccer.com/assets/main-CeRuF9QS.js
+File Name: C:\Downloaded Web Sites\car-soccer.com\assets\main-CeRuF9QS.js
+Content Type: text/javascript
+
+Uri: https://car-soccer.com/assets/privacy-Dta2f40H.js
+File Name: C:\Downloaded Web Sites\car-soccer.com\assets\privacy-Dta2f40H.js
+Content Type: text/javascript
+
+Uri: https://car-soccer.com/favicon-16x16.png
+File Name: C:\Downloaded Web Sites\car-soccer.com\favicon-16x16.png
+Content Type: image/png
+
+Uri: https://car-soccer.com/favicon-32x32.png
+File Name: C:\Downloaded Web Sites\car-soccer.com\favicon-32x32.png
+Content Type: image/png
+
+Uri: https://car-soccer.com/favicon.ico
+File Name: C:\Downloaded Web Sites\car-soccer.com\favicon.ico
+Content Type: image/vnd.microsoft.icon
+
+Uri: https://car-soccer.com/site.webmanifest
+File Name: C:\Downloaded Web Sites\car-soccer.com\site.webmanifest
+Content Type: application/manifest+json
+
