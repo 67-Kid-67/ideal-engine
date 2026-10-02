@@ -2,28 +2,47 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
-    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="/android-chrome-512x512.png" sizes="512x512" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#12376f" />
+    <meta name="theme-color" content="#0a1e40" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Rocket League 2</title>
+    <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"}}</script>
     <script type="module" crossorigin src="/assets/persisted-sODZFpJB.js"></script>
     <script type="module" crossorigin src="/assets/generatedCues-B42pQoPH.js"></script>
     <script type="module" crossorigin src="/assets/controllers-DoMZqhdH.js"></script>
     <script type="module" crossorigin src="/assets/main-Ujn3KlNv.js"></script>
+    <script type="module" crossorigin src="/assets/firebase-player.js"></script>
+    <script type="module" crossorigin src="/assets/garage.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/main-DyMbeQU4.css">
+  <link rel="preload" as="image" href="/assets/arena/stadium/real-grass.png" fetchpriority="high" />
+    <style>
+body{background:#061225}
+#brand-screen{position:fixed;inset:0;z-index:999999;display:grid;place-items:center;overflow:hidden;color:#f3f8ff;font-family:system-ui,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 50% 35%,rgba(44,135,255,.23),transparent 38%),radial-gradient(ellipse at 80% 82%,rgba(255,133,63,.18),transparent 32%),linear-gradient(145deg,#061225,#0a1e40 58%,#071225);animation:rl2-intro 4.6s cubic-bezier(.6,0,.8,1) forwards;pointer-events:none}
+.rl2-splash__panel{display:flex;flex-direction:column;align-items:center;gap:20px;padding:28px 32px;text-align:center}
+.rl2-splash__logo{display:flex;align-items:center;gap:18px}
+.rl2-splash__mark{position:relative;display:grid;place-items:center;width:76px;height:76px;border:2px solid rgba(220,245,255,.86);border-radius:22px 8px 22px 8px;background:linear-gradient(145deg,#168ad8,#113366 58%,#192b4d);box-shadow:0 0 30px rgba(56,190,255,.25),inset 0 1px rgba(255,255,255,.42);transform:skew(-5deg)}
+.rl2-splash__mark span{font-size:28px;font-weight:950;letter-spacing:-.08em;color:#f5fbff}
+.rl2-splash__mark b{position:absolute;right:-9px;bottom:-8px;display:grid;place-items:center;width:27px;height:27px;border:2px solid #ffe2c9;border-radius:9px;background:linear-gradient(135deg,#ffb16f,#f26836);color:#14223a;font-size:15px;box-shadow:0 4px 14px rgba(255,115,54,.34)}
+.rl2-splash__wordmark{display:flex;flex-direction:column;align-items:flex-start;gap:2px;font-size:clamp(30px,7vw,58px);font-weight:950;letter-spacing:.045em;line-height:.9;text-shadow:0 5px 22px rgba(27,147,255,.22)}
+.rl2-splash__wordmark>span{color:#f5fbff}.rl2-splash__wordmark strong{color:#7edbff}.rl2-splash__wordmark b{color:#ff9958}
+.rl2-splash__status{display:flex;align-items:center;gap:9px;margin-top:6px;color:#d3e5fa;font-size:11px;font-weight:800;letter-spacing:.19em}
+.rl2-splash__status span{width:7px;height:7px;border-radius:50%;background:#54dcff;box-shadow:0 0 12px #54dcff}
+.rl2-splash__track{width:min(280px,68vw);height:4px;overflow:hidden;border-radius:999px;background:rgba(190,220,255,.16)}
+.rl2-splash__track i{display:block;width:45%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#28b8ff,#bcecff 58%,#ff9855);animation:rl2-progress 1.3s ease-in-out infinite alternate}
+.rl2-splash__tagline{color:rgba(207,225,247,.66);font-size:10px;font-weight:700;letter-spacing:.21em}
+.title-block__maker{display:inline-flex;align-items:center;gap:6px;color:rgba(235,245,255,.82);font:700 12px/1.3 system-ui,"Segoe UI",sans-serif;letter-spacing:.035em;text-decoration:none}
+.title-block__maker-mark{display:inline-grid;place-items:center;padding:3px 6px;border:1px solid rgba(255,255,255,.35);border-radius:5px;background:linear-gradient(120deg,#54d3ff,#f8fbff 55%,#ffa15f);color:#10213d;font-size:9px;font-weight:950;box-shadow:0 2px 10px rgba(57,179,255,.22)}
+.title-block__maker strong{background:linear-gradient(95deg,#77dfff 0%,#f5fbff 48%,#ffad70 100%);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:950}
+@keyframes rl2-progress{from{transform:translateX(-65%)}to{transform:translateX(190%)}}
+@keyframes rl2-intro{0%,82%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+@media(prefers-reduced-motion:reduce){#brand-screen{animation-duration:2s}.rl2-splash__track i{animation:none;width:100%}}
+.load__emblem--rl2{display:grid;place-items:center;background:radial-gradient(circle at 30% 20%,#2088cf,#10254a 65%,#07152c)!important}.load__mark{position:relative;display:grid;place-items:center;width:66px;height:66px;border:2px solid #91e3ff;border-radius:19px 7px 19px 7px;background:linear-gradient(145deg,#258dcc,#123768 63%,#122646);color:#f5fbff;font:950 31px/1 system-ui,sans-serif;letter-spacing:-.11em;text-shadow:0 2px 8px #168bd1;box-shadow:0 0 23px #26b7ff55,inset 0 1px #fff8;transform:skew(-5deg)}.load__mark b{position:absolute;right:-10px;bottom:-9px;display:grid;place-items:center;width:27px;height:27px;border:2px solid #ffe5d2;border-radius:8px;background:linear-gradient(135deg,#ffb16f,#f26836);color:#172642;font:950 15px/1 system-ui,sans-serif;letter-spacing:0;text-shadow:none}</style>
   </head>
   <body>
     <div id="app"></div>
-  </body>
+  <div id="brand-screen" aria-hidden="true"><div class="rl2-splash__panel"><div class="rl2-splash__logo"><div class="rl2-splash__mark"><span>RL</span><b>2</b></div><div class="rl2-splash__wordmark"><span>ROCKET</span><strong>LEAGUE <b>2</b></strong></div></div><div class="rl2-splash__status"><span></span> PREPARING THE ARENA</div><div class="rl2-splash__track"><i></i></div><div class="rl2-splash__tagline">DRIVE FAST. OWN THE FIELD.</div></div></div></body>
 </html>
-
-<style>a[href*='play.google.com'], img[src*='google-play'], .google-play-btn { display: none !important; }</style>
-
-<style>a[href*='xthomasms'] { display: none !important; }</style>
-
-<style>title, h1, h2, .title, .logo-text { content: 'Rocket League 2' !important; } a[href*='xthomasms'], [class*='author'], [class*='credit'], a[href*='play.google.com'], img[src*='google-play'], .google-play-btn { display: none !important; } body::after, #app::after { content: 'Made by jenz' !important; position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); font-family: sans-serif; font-size: 14px; color: rgba(255,255,255,0.8); z-index: 9999; pointer-events: none; }</style>

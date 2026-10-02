@@ -3,8 +3,8 @@
   "short_name": "Rocket League 2",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0f16",
-  "theme_color": "#0a0f16",
+  "background_color": "#061225",
+  "theme_color": "#0a1e40",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

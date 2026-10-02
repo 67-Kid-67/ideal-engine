@@ -1386,7 +1386,7 @@ const MANIFEST = {
     }],
     "bytes": 133951714
 };
-const CACHE_PREFIX = "car-soccer-game-";
+const CACHE_PREFIX = "rocket-league-2-game-";
 const CACHE_NAME = CACHE_PREFIX + MANIFEST.version;
 const ASSET_URLS = new Set(MANIFEST.entries.map(entry => new URL(entry.url,self.location.origin).href));
 let preparation = null;
@@ -1657,23 +1657,54 @@ self.addEventListener("message", event => {
 }
 );
 
+const DYNAMIC_ASSETS = new Set([
+    "/android-chrome-192x192.png",
+    "/android-chrome-512x512.png",
+    "/apple-touch-icon.png",
+    "/assets/arena/stadium/stadium.glb",
+    "/assets/arena/stadium/real-grass.png",
+    "/assets/app-icon-512-DPODCpjJ.png",
+    "/assets/bots.worker-B9-amCD7.js",
+    "/assets/controllers-DoMZqhdH.js",
+    "/assets/generatedCues-B42pQoPH.js",
+    "/assets/main-DyMbeQU4.css",
+    "/assets/main-Ujn3KlNv.js",
+    "/assets/persisted-sODZFpJB.js",
+    "/favicon-16x16.png",
+    "/favicon-32x32.png",
+    "/favicon.ico",
+    "/maskable-icon-512x512.png",
+    "/site.webmanifest",
+    "/assets/worker-CDPLxO35.js",
+]);
+
 self.addEventListener("fetch", event => {
     const request = event.request;
     const url = new URL(request.url);
     if (request.method !== "GET" || url.origin !== self.location.origin)
         return;
-    const navigation = request.mode === "navigate" && (url.pathname === MANIFEST.base || url.pathname === `${MANIFEST.base}index.html`);
-    const key = navigation ? new URL(`${MANIFEST.base}index.html`,self.location.origin).href : url.href;
-    if (!navigation && !ASSET_URLS.has(key) && url.pathname !== `${MANIFEST.base}offline-manifest.json`)
+    const navigation = request.mode === "navigate" && (url.pathname === MANIFEST.base || url.pathname === MANIFEST.base + "index.html");
+    const dynamicAsset = DYNAMIC_ASSETS.has(url.pathname);
+    const key = navigation ? new URL(MANIFEST.base + "index.html", self.location.origin).href : url.href;
+    if (!navigation && !dynamicAsset && !ASSET_URLS.has(key) && url.pathname !== MANIFEST.base + "offline-manifest.json")
         return;
     event.respondWith((async () => {
         const cache = await caches.open(CACHE_NAME);
         const cached = await cache.match(key);
+        if (navigation || dynamicAsset) {
+            try {
+                const response = await fetch(request);
+                if (response.ok)
+                    await cache.put(key, response.clone());
+                return response;
+            } catch (error) {
+                if (cached)
+                    return cached;
+                throw error;
+            }
+        }
         if (cached)
             return cached;
-        // Missing storage must go through the same complete loading gate on reload.
         return fetch(request);
-    }
-    )());
-}
-);
+    })());
+});
